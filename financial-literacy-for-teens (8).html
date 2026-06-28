@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Literacy for Teens</title>
+  <meta name="description" content="Financial Literacy for Teens is a professional platform founded by Ridhaan Katraria to help students learn budgeting, saving, investing, taxes, credit, and other essential money skills." />
+  <style>
+    :root {
+      --navy: #0f172a;
+      --blue: #1d4ed8;
+      --blue-soft: #dbeafe;
+      --teal: #0f766e;
+      --gold: #d97706;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(226,232,240,0.9); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 0; }
+    .brand { font-size: 1.2rem; font-weight: 800; color: var(--navy); letter-spacing: 0.2px; }
+    .brand span { color: var(--blue); }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.95rem; color: var(--muted); font-weight: 600; }
+
+    .hero { position: relative; overflow: hidden; background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 55%, #0f766e 100%); color: #ffffff; padding: 84px 0 68px; }
+    .hero::after { content: ""; position: absolute; inset: auto -10% -120px auto; width: 380px; height: 380px; border-radius: 999px; background: rgba(255,255,255,0.08); filter: blur(10px); }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; align-items: center; position: relative; z-index: 1; }
+    .eyebrow { display: inline-block; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.18); font-size: 0.84rem; font-weight: 700; margin-bottom: 16px; }
+    h1 { font-size: clamp(2.2rem, 5vw, 4.2rem); line-height: 1.06; margin: 0 0 16px; }
+    .hero p { margin: 0 0 24px; font-size: 1.06rem; max-width: 700px; color: rgba(255,255,255,0.92); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 22px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; border-radius: 12px; border: 1px solid transparent; font-weight: 700; transition: 0.25s ease; }
+    .btn-primary { background: #ffffff; color: var(--blue); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(15,23,42,0.16); }
+    .btn-secondary { background: transparent; color: #ffffff; border-color: rgba(255,255,255,0.28); }
+    .hero-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.16); border-radius: 24px; padding: 26px; box-shadow: 0 18px 48px rgba(2,8,23,0.2); }
+    .hero-card h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.1rem; }
+    .hero-card ul { padding-left: 18px; margin: 0; color: rgba(255,255,255,0.92); }
+    .hero-card li + li { margin-top: 8px; }
+
+    section { padding: 72px 0; }
+    .section-head { margin-bottom: 28px; max-width: 760px; }
+    .section-head h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin: 0 0 10px; color: var(--navy); }
+    .section-head p { margin: 0; color: var(--muted); font-size: 1.02rem; }
+
+    .about-grid { display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: stretch; }
+    .founder-card, .mission-card, .blog-card, .gap-card, .feature-card, .form-box, .editor-card, .contact-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .founder-card { padding: 24px; text-align: center; }
+    .avatar { width: 92px; height: 92px; margin: 0 auto 16px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, var(--blue), var(--teal)); color: #ffffff; font-size: 1.8rem; font-weight: 800; }
+    .founder-card h3 { margin: 0 0 8px; color: var(--navy); }
+    .tag { display: inline-block; padding: 7px 12px; border-radius: 999px; background: var(--blue-soft); color: var(--blue); font-weight: 700; font-size: 0.84rem; margin-bottom: 14px; }
+    .mission-card { padding: 26px; }
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 22px; }
+    .metric { border: 1px solid var(--border); border-radius: 14px; padding: 16px; background: #f8fbff; }
+    .metric strong { display: block; font-size: 1.45rem; color: var(--blue); }
+
+    .features-grid, .gaps-grid, .blog-grid { display: grid; gap: 18px; }
+    .features-grid { grid-template-columns: repeat(3, 1fr); }
+    .feature-card { padding: 20px; }
+    .feature-card h3 { margin: 0 0 10px; font-size: 1.06rem; color: var(--navy); }
+    .feature-card p { margin: 0; color: var(--muted); }
+
+    .gaps-grid { grid-template-columns: repeat(3, 1fr); }
+    .gap-card { padding: 22px; border-top: 4px solid var(--blue); }
+    .gap-card h3 { margin: 0 0 10px; font-size: 1.05rem; color: var(--navy); }
+    .gap-card p { margin: 0; color: var(--muted); font-size: 0.96rem; }
+
+    .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    .blog-card { overflow: hidden; }
+    .blog-banner { padding: 18px 22px; color: #ffffff; font-weight: 800; letter-spacing: 0.2px; }
+    .b1 { background: linear-gradient(135deg, #1d4ed8, #0f766e); }
+    .b2 { background: linear-gradient(135deg, #7c3aed, #1d4ed8); }
+    .b3 { background: linear-gradient(135deg, #0f766e, #d97706); }
+    .b4 { background: linear-gradient(135deg, #be123c, #7c3aed); }
+    .blog-body { padding: 22px; }
+    .blog-body h3 { margin: 0 0 10px; font-size: 1.1rem; color: var(--navy); }
+    .blog-body p { margin: 0 0 14px; color: var(--muted); }
+    .pill { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #f1f5f9; color: var(--text); font-size: 0.82rem; font-weight: 700; margin-right: 8px; margin-bottom: 8px; }
+    .editor-card { margin-top: 20px; padding: 24px; background: linear-gradient(135deg, #eff6ff, #ecfeff); }
+    .editor-card h3 { margin-top: 0; margin-bottom: 10px; color: var(--navy); }
+
+    .form-section { background: linear-gradient(180deg, #eef4ff 0%, #f8fafc 100%); }
+    .form-layout { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 22px; align-items: start; }
+    .form-box { padding: 24px; }
+    .form-box h3 { margin-top: 0; color: var(--navy); }
+    .form-box ul { padding-left: 18px; margin: 12px 0 0; color: var(--muted); }
+    .form-box li + li { margin-top: 8px; }
+    .form-embed { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .form-embed iframe { width: 100%; height: 1360px; border: 0; background: #ffffff; }
+    .note { margin-top: 14px; font-size: 0.92rem; color: var(--muted); }
+
+    .contact-card { padding: 24px; }
+    .contact-card p { color: var(--muted); margin-top: 0; }
+    .contact-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
+    .contact-item { border: 1px solid var(--border); border-radius: 14px; padding: 16px; background: #ffffff; }
+    .contact-item strong { display: block; margin-bottom: 6px; color: var(--navy); }
+
+    footer { padding: 26px 0 42px; color: var(--muted); font-size: 0.94rem; }
+    .footer-bar { border-top: 1px solid var(--border); padding-top: 20px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+    @media (max-width: 980px) {
+      .hero-grid, .about-grid, .form-layout, .features-grid, .gaps-grid, .blog-grid, .contact-list { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .nav { flex-direction: column; align-items: flex-start; }
+      .hero { padding-top: 56px; }
+      .hero-actions { flex-direction: column; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">Financial <span>Literacy for Teens</span></div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#focus-areas">Focus Areas</a>
+        <a href="#gaps">Financial Gaps</a>
+        <a href="#research">Research Blogs</a>
+        <a href="#feedback">Google Form</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Youth Finance Education Platform</div>
+          <h1>Financial Literacy for Teens</h1>
+          <p>A professional student-focused website designed to close the biggest financial literacy gaps among teenagers through research, practical education, feedback, and community-driven learning.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#research">Explore Research Blogs</a>
+            <a class="btn btn-secondary" href="#feedback">Submit Feedback</a>
+          </div>
+          <p>Founded by <strong>Ridhaan Katraria</strong>, this platform helps students build stronger understanding of money, budgeting, saving, credit, taxes, investing, scams, entrepreneurship, and long-term financial planning.</p>
+        </div>
+        <aside class="hero-card">
+          <h3>What this website includes</h3>
+          <ul>
+            <li>A polished homepage with a strong educational mission.</li>
+            <li>A complete section on major gaps in teen financial literacy.</li>
+            <li>A research blog area for your 4 articles.</li>
+            <li>A Google Form section for gap reporting, topic suggestions, and reviews.</li>
+            <li>Founder and editor positioning for Ridhaan Katraria.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>About the founder</h2>
+          <p>This initiative is built to make financial education more practical, accessible, and relevant for teenagers before they enter adult financial life.</p>
+        </div>
+        <div class="about-grid">
+          <article class="founder-card">
+            <div class="avatar">RK</div>
+            <h3>Ridhaan Katraria</h3>
+            <div class="tag">Founder and Editor</div>
+            <p>Ridhaan Katraria is the founder of Financial Literacy for Teens and the lead editor of the platform's research and educational content.</p>
+          </article>
+          <article class="mission-card">
+            <h3>Mission</h3>
+            <p>Financial Literacy for Teens exists to address the real-world gaps that many students face when learning about money. Schools often touch only small parts of personal finance, leaving teenagers underprepared for budgeting, banking, responsible credit use, taxation, and decision-making in adulthood.</p>
+            <p>This website creates a space where research, student feedback, and practical resources come together. It is designed not only to inform visitors, but also to collect their experiences and suggestions so the platform can keep improving over time.</p>
+            <div class="metrics">
+              <div class="metric"><strong>12+</strong> Core financial literacy gap areas covered</div>
+              <div class="metric"><strong>4</strong> Research blog slots prepared for publication</div>
+              <div class="metric"><strong>1</strong> Community feedback form for students and visitors</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="focus-areas">
+      <div class="container">
+        <div class="section-head">
+          <h2>What students need to learn</h2>
+          <p>The platform is built around the most important skills teenagers need in order to make informed financial decisions early in life.</p>
+        </div>
+        <div class="features-grid">
+          <article class="feature-card">
+            <h3>Practical money skills</h3>
+            <p>Students need usable knowledge about budgeting, managing allowances or income, comparing expenses, and setting realistic savings goals.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Decision-making confidence</h3>
+            <p>The aim is not only to teach concepts, but also to help young people evaluate choices involving debt, spending, risk, and long-term planning.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Research and participation</h3>
+            <p>Students and visitors can contribute by identifying what is missing in financial education, suggesting topics, and sharing reviews of the platform.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gaps">
+      <div class="container">
+        <div class="section-head">
+          <h2>Key financial literacy gaps</h2>
+          <p>These are the major areas where many teenagers need more structured education, clearer examples, and practical guidance.</p>
+        </div>
+        <div class="gaps-grid">
+          <article class="gap-card"><h3>Budgeting and money management</h3><p>Many students do not learn how to track spending, divide income, set limits, or plan monthly finances in a realistic way.</p></article>
+          <article class="gap-card"><h3>Saving habits and emergency funds</h3><p>Teens often know they should save, but not how much to save, why emergency funds matter, or how saving supports future goals.</p></article>
+          <article class="gap-card"><h3>Banking basics</h3><p>Opening accounts, understanding debit cards, reading bank statements, and avoiding hidden fees are commonly overlooked topics.</p></article>
+          <article class="gap-card"><h3>Credit scores and credit cards</h3><p>Young people often enter adulthood without understanding credit history, interest rates, due dates, late fees, or responsible credit use.</p></article>
+          <article class="gap-card"><h3>Loans and debt</h3><p>Student loans, personal loans, buy-now-pay-later systems, and debt traps can be confusing without early education.</p></article>
+          <article class="gap-card"><h3>Investing fundamentals</h3><p>Concepts such as compound growth, risk, diversification, stocks, bonds, and mutual funds are often introduced too late.</p></article>
+          <article class="gap-card"><h3>Taxes and salary understanding</h3><p>Students may not understand tax basics, payslips, deductions, gross income, net income, or why tax planning matters.</p></article>
+          <article class="gap-card"><h3>Insurance awareness</h3><p>Health, vehicle, travel, and life insurance are rarely explained in simple ways for teenagers preparing for adult responsibility.</p></article>
+          <article class="gap-card"><h3>Digital payments and financial safety</h3><p>Teens need to understand UPI or digital payments, fraud prevention, privacy, phishing, and online scam awareness.</p></article>
+          <article class="gap-card"><h3>Needs, wants, and spending psychology</h3><p>Social pressure, impulse buying, lifestyle comparison, and emotional spending shape financial behavior but are rarely taught directly.</p></article>
+          <article class="gap-card"><h3>Career income and financial planning</h3><p>Students should understand earnings, internships, first salaries, negotiation, and how career choices affect long-term finances.</p></article>
+          <article class="gap-card"><h3>Entrepreneurship and side income</h3><p>Financial literacy also includes learning how value is created, how small ventures work, and how income can be generated ethically.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container">
+        <div class="section-head">
+          <h2>Research blog</h2>
+          <p>Four professional article spaces are ready so Ridhaan Katraria can publish research-based blog posts on teen financial literacy.</p>
+        </div>
+        <div class="blog-grid">
+          <article class="blog-card">
+            <div class="blog-banner b1">Research Blog 01</div>
+            <div class="blog-body">
+              <h3>Why financial literacy should begin in the teenage years</h3>
+              <p>Use this article slot for your first research blog explaining why early financial education matters and what happens when it is delayed.</p>
+              <span class="pill">Prepared for publication</span>
+              <span class="pill">Author: Ridhaan Katraria</span>
+            </div>
+          </article>
+          <article class="blog-card">
+            <div class="blog-banner b2">Research Blog 02</div>
+            <div class="blog-body">
+              <h3>Common financial mistakes students make without guidance</h3>
+              <p>Use this section for a research-backed article on budgeting mistakes, spending pressure, credit misuse, or lack of money awareness.</p>
+              <span class="pill">Prepared for publication</span>
+              <span class="pill">Author: Ridhaan Katraria</span>
+            </div>
+          </article>
+          <article class="blog-card">
+            <div class="blog-banner b3">Research Blog 03</div>
+            <div class="blog-body">
+              <h3>How schools and families can improve financial education</h3>
+              <p>Use this slot for recommendations, policies, or community-based solutions that can reduce the financial literacy gap for teenagers.</p>
+              <span class="pill">Prepared for publication</span>
+              <span class="pill">Author: Ridhaan Katraria</span>
+            </div>
+          </article>
+          <article class="blog-card">
+            <div class="blog-banner b4">Research Blog 04</div>
+            <div class="blog-body">
+              <h3>What students say is missing from financial literacy today</h3>
+              <p>Use this article to publish insights from surveys, feedback, and student experiences collected through your form and research work.</p>
+              <span class="pill">Prepared for publication</span>
+              <span class="pill">Author: Ridhaan Katraria</span>
+            </div>
+          </article>
+        </div>
+        <div class="editor-card">
+          <h3>Editor role included</h3>
+          <p>This website presents <strong>Ridhaan Katraria</strong> as the platform's <strong>Founder and Editor</strong>. The blog area is structured so your four research blogs can be added directly by editing each article block or linking each card to a separate full article page later.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="feedback" class="form-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Google Form for feedback, gaps, suggestions, and reviews</h2>
+          <p>Visitors can use the form below to identify missing financial literacy topics, suggest future content, and write reviews about the platform.</p>
+        </div>
+        <div class="form-layout">
+          <article class="form-box">
+            <h3>What the form covers</h3>
+            <p>This form collects real responses from students, parents, teachers, and visitors to help improve the platform.</p>
+            <ul>
+              <li><strong>Name</strong> (optional)</li>
+              <li><strong>Age group</strong></li>
+              <li><strong>Are you a student, parent, teacher, researcher, or visitor?</strong></li>
+              <li><strong>Do you think teenagers receive enough financial education today?</strong></li>
+              <li><strong>Which financial literacy gaps are most serious for teenagers?</strong></li>
+              <li><strong>What financial literacy topic is missing most in schools?</strong></li>
+              <li><strong>What topics would you like this website to cover in future blogs?</strong></li>
+              <li><strong>What features would improve this website?</strong></li>
+              <li><strong>Email address for regular updates</strong> (optional)</li>
+            </ul>
+          </article>
+          <div class="form-embed">
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSeeEyWWkFsDGOHq5CpnHusNq75jd7H2iWNTLIYXcShthgXJbA/viewform?embedded=true"
+              title="Financial Literacy for Teens Feedback Form">
+              Loading Google Form...
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Professional website notes</h2>
+          <p>This page is designed to be clear, formal, and student-friendly while still looking professional enough for research presentation, public sharing, and future expansion.</p>
+        </div>
+        <div class="contact-card">
+          <p>You can publish this as your main website and later expand it with dedicated blog pages, a real contact email, school or organization details, updated survey results, charts, and research summaries.</p>
+          <div class="contact-list">
+            <div class="contact-item"><strong>Website name</strong>Financial Literacy for Teens</div>
+            <div class="contact-item"><strong>Founder</strong>Ridhaan Katraria</div>
+            <div class="contact-item"><strong>Editorial role</strong>Founder and Editor</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-bar">
+      <div><strong>Financial Literacy for Teens</strong> — Founded by Ridhaan Katraria</div>
+      <div>Built as a professional awareness and research platform for student financial education.</div>
+    </div>
+  </footer>
+</body>
+</html>
